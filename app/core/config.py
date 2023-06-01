@@ -8,7 +8,7 @@ class Settings(BaseSettings):
 
     app_title: str = 'Кошачий благотворительный фонд'
     description: str = 'Сервис для поддержки котиков!'
-    database_url: str = 'sqlite+aiosqlite:///./fastapi.sqlite'
+    database_url: str = 'sqlite+aiosqlite:///./fastapi.db'
     secret: str = 'secret'
     first_superuser_email: Optional[EmailStr] = 'admin@admin.ru'
     first_superuser_password: Optional[str] = 'admin'
