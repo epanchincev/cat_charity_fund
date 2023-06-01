@@ -130,3 +130,11 @@ dmypy.json
 
 # .idea
 .idea
+
+
+# db files
+*.db
+
+
+# vscode
+.vscode
