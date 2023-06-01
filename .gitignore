@@ -133,7 +133,7 @@ dmypy.json
 
 
 # db files
-
+*.db
 
 
 # vscode
