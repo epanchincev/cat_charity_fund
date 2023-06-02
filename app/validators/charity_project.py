@@ -74,7 +74,7 @@ class CharityProjectValidator:
         charity_project: CharityProject,
     ) -> None:
         """Проверяет валидность новой суммы"""
-        if new_amount < charity_project.full_amount:
+        if new_amount < charity_project.invested_amount:
             raise HTTPException(
                 status_code=HTTPStatus.BAD_REQUEST,
                 detail=NEW_AMOUNT_LESS_EXISTS_ERROR,

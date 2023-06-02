@@ -48,10 +48,9 @@ touch .env
 
 Внести в файл следующие переменные:
 ```shell
-echo "DATABASE_URL=yacut" > .env
 echo "FIRST_SUPERUSER_EMAIL=your_email" > .env
 echo "FIRST_SUPERUSER_PASSWORD=your_password" > .env
-echo "DATABASE_URI=YOUR_DATABASE_URI_KEY" > .env
+echo "DATABASE_URL=YOUR_DATABASE_URI_KEY" > .env
 echo "SECRET=YOUR_SECRET_KEY" > .env
 ```
 

@@ -15,7 +15,12 @@ load_dotenv('.env')
 
 config = context.config
 
+<<<<<<< HEAD
 config.set_main_option('sqlalchemy.url', 'sqlite+aiosqlite:///./fastapi.db')
+=======
+config.set_main_option('sqlalchemy.url', os.getenv(
+    'DATABASE_URL', default='sqlite+aiosqlite:///./fastapi.db'))
+>>>>>>> d0e28ac (fix 3 tests)
 
 
 if config.config_file_name is not None:
