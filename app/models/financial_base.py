@@ -24,13 +24,13 @@ class FinancialBase(Base):
         ),
     )
 
+    def __repr__(self) -> str:
+        return f'id: {self.id}'
+
     @property
     def amount_to_fully_invested(self) -> int:
         """Сумма до закрытия"""
         return self.full_amount - self.invested_amount
-
-    def __repr__(self) -> str:
-        return f'id: {self.id}'
 
     def _close(self) -> None:
         """Закрытие объекта"""

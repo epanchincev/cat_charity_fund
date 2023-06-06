@@ -11,5 +11,8 @@ class CharityProject(FinancialBase):
     description = Column(Text, nullable=False)
 
     def __repr__(self) -> str:
-        return ('Благотворительный проект, ' +
-                super().__repr__() + f', наименование: {self.name}')
+        return ', '.join((
+            'Благотворительный проект',
+            super().__repr__(),
+            f'наименование: {self.name}',
+        ))

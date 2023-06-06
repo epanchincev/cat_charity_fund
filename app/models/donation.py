@@ -10,4 +10,4 @@ class Donation(FinancialBase):
     comment = Column(Text)
 
     def __repr__(self) -> str:
-        return 'Пожертвование, ' + super().__repr__()
+        return ', '.join(('Пожертвование', super().__repr__()))
