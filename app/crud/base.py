@@ -12,6 +12,20 @@ class CRUDBase:
     def __init__(self, model) -> None:
         self.model = model
 
+    async def get(
+        self,
+        obj_id: int,
+        session: AsyncSession,
+    ) -> Union[Donation, CharityProject]:
+        """Получить объект по id"""
+        db_obj = await session.execute(
+            select(self.model).where(
+                self.model.id == obj_id
+            )
+        )
+
+        return db_obj.scalars().first()
+
     async def get_multi(
             self,
             session: AsyncSession
@@ -52,7 +66,7 @@ class CRUDBase:
 
         return db_obj
 
-    async def get_open_multi(
+    async def get_not_fully_invested_objects(
         self,
         session: AsyncSession
     ) -> List[Union[Donation, CharityProject]]:
