@@ -13,7 +13,7 @@ class DonationBase(BaseModel):
 
 
 class DonationCreate(DonationBase):
-    """Модель схемы для создания пожертваования"""
+    """Модель схемы для создания пожертвования"""
 
     pass
 
