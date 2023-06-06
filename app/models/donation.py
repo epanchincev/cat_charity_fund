@@ -11,8 +11,3 @@ class Donation(FinancialBase):
 
     def __repr__(self) -> str:
         return 'Пожертвование, ' + super().__repr__()
-
-    @property
-    def balance_of_invested_amount(self) -> int:
-        """Остаток инвестируемого"""
-        return self.full_amount - self.invested_amount

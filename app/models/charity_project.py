@@ -13,8 +13,3 @@ class CharityProject(FinancialBase):
     def __repr__(self) -> str:
         return ('Благотворительный проект, ' +
                 super().__repr__() + f', наименование: {self.name}')
-
-    @property
-    def amount_to_close(self) -> int:
-        """Сумма до закрытия"""
-        return self.full_amount - self.invested_amount
