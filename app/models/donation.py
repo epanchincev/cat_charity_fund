@@ -9,6 +9,9 @@ class Donation(FinancialBase):
     user_id = Column(Integer, ForeignKey('user.id'))
     comment = Column(Text)
 
+    def __repr__(self) -> str:
+        return 'Пожертвование, ' + super().__repr__()
+
     @property
     def balance_of_invested_amount(self) -> int:
         """Остаток инвестируемого"""

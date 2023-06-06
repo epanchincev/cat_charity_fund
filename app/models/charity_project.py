@@ -10,6 +10,10 @@ class CharityProject(FinancialBase):
     name = Column(String(MAX_LEN_NAME_FIELD), unique=True, nullable=False)
     description = Column(Text, nullable=False)
 
+    def __repr__(self) -> str:
+        return ('Благотворительный проект, ' +
+                super().__repr__() + f', наименование: {self.name}')
+
     @property
     def amount_to_close(self) -> int:
         """Сумма до закрытия"""

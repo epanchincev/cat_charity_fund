@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, DateTime, Integer
+from sqlalchemy import Boolean, CheckConstraint, Column, DateTime, Integer
 
 from app.core.db import Base
 
@@ -15,6 +15,17 @@ class FinancialBase(Base):
     fully_invested = Column(Boolean, default=False)
     create_date = Column(DateTime, nullable=False, default=datetime.now)
     close_date = Column(DateTime, default=None)
+
+    __table_args__ = (
+        CheckConstraint('full_amount > 0', name='full_amount_is_positive'),
+        CheckConstraint(
+            'invested_amount <= full_amount',
+            name='full_amount_greater_then_invested_amount',
+        ),
+    )
+
+    def __repr__(self) -> str:
+        return f'id: {self.id}'
 
     def _close(self) -> None:
         """Закрытие объекта"""
