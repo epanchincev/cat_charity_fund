@@ -9,7 +9,7 @@ from app.crud import charity_project_crud
 from app.schemas import (CharityProjectCreate, CharityProjectDB,
                          CharityProjectUpdate)
 from app.services import add_project_to_db
-from app.validators import charity_project_validators
+from app.api.validators import charity_project_validators
 
 
 router = APIRouter()

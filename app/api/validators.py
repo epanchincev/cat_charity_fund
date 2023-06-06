@@ -79,3 +79,6 @@ class CharityProjectValidator:
                 status_code=HTTPStatus.BAD_REQUEST,
                 detail=NEW_AMOUNT_LESS_EXISTS_ERROR,
             )
+
+
+charity_project_validators = CharityProjectValidator()
