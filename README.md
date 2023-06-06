@@ -70,4 +70,5 @@ uvicorn app.main:app
 
 ### Автор проекта
 [Alexey Epanchincev](https://github.com/epanchincev/)
+
 [Связь через TG](https://t.me/epanchincev)
