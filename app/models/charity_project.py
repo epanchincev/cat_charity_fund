@@ -1,11 +1,10 @@
 from sqlalchemy import Column, String, Text
 
-from app.core.base import Base
 from app.core.constants import MAX_LEN_NAME_FIELD
-from app.models.mixins import DonationCharityMixin
+from app.models.financial_base import FinancialBase
 
 
-class CharityProject(DonationCharityMixin, Base):
+class CharityProject(FinancialBase):
     """Модель благотворительного проекта"""
 
     name = Column(String(MAX_LEN_NAME_FIELD), unique=True, nullable=False)

@@ -2,9 +2,13 @@ from datetime import datetime
 
 from sqlalchemy import Boolean, Column, DateTime, Integer
 
+from app.core.db import Base
 
-class DonationCharityMixin:
+
+class FinancialBase(Base):
     """Общие поля и методы для проектов и пожертвований."""
+
+    __abstract__ = True
 
     full_amount = Column(Integer, nullable=False)
     invested_amount = Column(Integer, default=0)
