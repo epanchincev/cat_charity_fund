@@ -10,8 +10,8 @@ class Settings(BaseSettings):
     description: str = 'Сервис для поддержки котиков!'
     database_url: str = 'sqlite+aiosqlite:///./cat_charity_fund.db'
     secret: str = 'secretkeyasfas'
-    first_superuser_email: Optional[EmailStr] = 'admin@admin.ru'
-    first_superuser_password: Optional[str] = 'StrongPassword'
+    first_superuser_email: Optional[EmailStr] = None
+    first_superuser_password: Optional[str] = None
 
     class Config:
         env_file = '.env'
