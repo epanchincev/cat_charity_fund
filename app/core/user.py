@@ -13,7 +13,7 @@ from app.core.constants import (JWT_LIFETIME_SECONDS, MIN_PASSWORD_LEN,
                                 PASSWORD_LESS_THAN_NEED_ERROR,
                                 PASSWORD_MUST_NOT_CONTAIN_EMAIL_ERROR)
 from app.core.db import get_async_session
-from app.models.user import User
+from app.models import User
 from app.schemas.user import UserCreate
 
 
