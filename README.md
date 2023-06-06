@@ -65,10 +65,12 @@ uvicorn app.main:app
 
 ## Документация API.
 При запущенном сервере.
+
 [Swagger](https://127.0.0.1:8000/docs)
+
 [Redoc](https://127.0.0.1:8000/redoc)
 
 ### Автор проекта
-[Alexey Epanchincev](https://github.com/epanchincev/)
+:construction_worker:[Alexey Epanchincev](https://github.com/epanchincev/)
 
-[Связь через TG](https://t.me/epanchincev)
+:calling:[Связь через TG](https://t.me/epanchincev)
