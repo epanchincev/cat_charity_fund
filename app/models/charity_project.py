@@ -18,6 +18,3 @@ class CharityProject(FinancialBase):
     def amount_to_close(self) -> int:
         """Сумма до закрытия"""
         return self.full_amount - self.invested_amount
-
-    def __repr__(self) -> str:
-        return f'id:{self.id} name:{self.name} full_amount: {self.full_amount}'
