@@ -84,3 +84,13 @@ class CRUDBase:
         await session.commit()
 
         return db_obj
+
+    async def get_open_multi(self, session: AsyncSession):
+        """Получить все открытые объекты модели"""
+        open_objects = await session.execute(
+            select(self.model).where(
+                self.model.fully_invested.is_(False)
+            ).order_by(self.model.create_date)
+        )
+
+        return open_objects.scalars().all()
