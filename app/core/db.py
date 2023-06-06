@@ -2,6 +2,8 @@ from sqlalchemy import Column, Integer
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import declarative_base, declared_attr, sessionmaker
 
+from app.core.config import settings
+
 
 class PreBase:
     """Поля и методы базового класса"""
@@ -16,7 +18,7 @@ class PreBase:
 
 Base = declarative_base(cls=PreBase)
 
-engine = create_async_engine('sqlite+aiosqlite:///./fastapi.db')
+engine = create_async_engine(settings.database_url)
 
 AsyncSessionLocal = sessionmaker(engine, class_=AsyncSession)
 
