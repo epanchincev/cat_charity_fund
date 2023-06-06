@@ -24,18 +24,5 @@ class CRUDDonation(CRUDBase):
 
         return donations.scalars().all()
 
-    @staticmethod
-    async def get_open_donations(
-        session: AsyncSession,
-    ) -> List[Donation]:
-        """Получить все открытые пожертвования."""
-        donations = await session.execute(
-            select(Donation).where(
-                Donation.fully_invested.is_(False)
-            ).order_by(Donation.create_date)
-        )
-
-        return donations.scalars().all()
-
 
 donation_crud = CRUDDonation(Donation)
