@@ -10,13 +10,14 @@ from app.core.constants import MAX_LEN_NAME_FIELD
 class CharityProjectBase(BaseModel):
     """Базовая модель схемы благотворительного проекта"""
 
-    name: Optional[str] = Field(None, min_length=1, max_length=MAX_LEN_NAME_FIELD)
-    description: Optional[str] = Field(None, min_length=1)
+    name: Optional[str] = Field(None, le=MAX_LEN_NAME_FIELD)
+    description: Optional[str] = Field(None)
     full_amount: Optional[PositiveInt]
 
     class Config:
 
         extra = Extra.forbid
+        min_anystr_lenght = 1
 
 
 class CharityProjectDB(CharityProjectBase):
@@ -36,8 +37,8 @@ class CharityProjectDB(CharityProjectBase):
 class CharityProjectCreate(CharityProjectBase):
     """Модель схемы благотворительного проекта для создания"""
 
-    name: str = Field(..., min_length=1, max_length=MAX_LEN_NAME_FIELD)
-    description: str = Field(..., min_length=1)
+    name: str = Field(..., le=MAX_LEN_NAME_FIELD)
+    description: str
     full_amount: PositiveInt
 
 
