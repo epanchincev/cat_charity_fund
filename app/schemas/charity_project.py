@@ -17,7 +17,7 @@ class CharityProjectBase(BaseModel):
     class Config:
 
         extra = Extra.forbid
-        min_anystr_lenght = 1
+        min_anystr_length = 1
 
 
 class CharityProjectDB(CharityProjectBase):
