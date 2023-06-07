@@ -1,35 +1,27 @@
-from typing import List, Union
+from typing import List
 
-from app.models import CharityProject, Donation
-
-
-def calculate_invested_amount(
-    obj_in: Union[Donation, CharityProject],
-    not_fully_invested_obj: Union[Donation, CharityProject],
-) -> int:
-    """Расчет размера доната"""
-    if obj_in.amount_to_fully_invested >= not_fully_invested_obj.amount_to_fully_invested:
-        return not_fully_invested_obj.amount_to_fully_invested
-
-    return obj_in.amount_to_fully_invested
+from app.models import FinancialBase
 
 
 def investment_process(
-    obj_in: Union[Donation, CharityProject],
-    not_fully_invested_objs: List[Union[Donation, CharityProject]],
-) -> List[Union[Donation, CharityProject]]:
+    target: FinancialBase,
+    sources: List[FinancialBase],
+) -> List[FinancialBase]:
     """Процесс инвестирования"""
     changed_objects = []
 
-    for not_fully_invested_obj in not_fully_invested_objs:
-        invested_amount = calculate_invested_amount(obj_in, not_fully_invested_obj)
-        obj_in.investment(invested_amount)
-        not_fully_invested_obj.investment(invested_amount)
-        changed_objects.append(not_fully_invested_obj)
+    for source in sources:
+        invested_amount = min(
+            target.amount_to_fully_invested,
+            source.amount_to_fully_invested,
+        )
+        target.investment(invested_amount)
+        source.investment(invested_amount)
+        changed_objects.append(source)
 
-        if obj_in.fully_invested:
+        if target.fully_invested:
             break
 
-    changed_objects.append(obj_in)
+    changed_objects.append(target)
 
     return changed_objects
