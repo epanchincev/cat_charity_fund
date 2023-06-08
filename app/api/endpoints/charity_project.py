@@ -47,12 +47,11 @@ async def create_charity_project(
         charity_project.name, session
     )
     new_project = CharityProject(**charity_project.dict(), invested_amount=0)
-    not_fully_invested_donations = (
-        await donation_crud.get_not_fully_invested_objects(session)
-    )
-    changed_objects = investment_process(new_project, not_fully_invested_donations)
 
-    session.add_all(changed_objects)
+    session.add_all(investment_process(
+        new_project,
+        await donation_crud.get_not_fully_invested_objects(session)
+    ))
     await session.commit()
     await session.refresh(new_project)
 
