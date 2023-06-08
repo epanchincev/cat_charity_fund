@@ -46,7 +46,7 @@ async def create_charity_project(
     await charity_project_validators.check_name_duplicate(
         charity_project.name, session
     )
-    new_project = CharityProject(**charity_project.dict(), invested_amount=0)
+    new_project = CharityProject(**charity_project.dict())
 
     session.add_all(investment_process(
         new_project,

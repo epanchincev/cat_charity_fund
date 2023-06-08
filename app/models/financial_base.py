@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Any
 
 from sqlalchemy import Boolean, CheckConstraint, Column, DateTime, Integer
 
@@ -23,6 +24,10 @@ class FinancialBase(Base):
             name='full_amount_greater_then_invested_amount',
         ),
     )
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        self.invested_amount = 0
 
     def __repr__(self) -> str:
         return (

@@ -45,7 +45,6 @@ async def create_donation(
     new_donation = Donation(
         **donation.dict(),
         user_id=user.id,
-        invested_amount=0,
     )
     session.add_all(investment_process(
         new_donation,
