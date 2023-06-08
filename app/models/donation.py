@@ -10,6 +10,6 @@ class Donation(FinancialBase):
     comment = Column(Text)
 
     def __repr__(self) -> str:
-        return 'Donation, {}, user_id: {}, comment: {}'.format(
+        return '{}, user_id: {}, comment: {}'.format(
             super().__repr__(), self.user_id, self.comment
         )

@@ -11,6 +11,6 @@ class CharityProject(FinancialBase):
     description = Column(Text, nullable=False)
 
     def __repr__(self) -> str:
-        return 'ChatityProject, {}, name: {}, desription: {}'.format(
+        return '{}, name: {}, desription: {}'.format(
             super().__repr__(), self.name, self.description
         )

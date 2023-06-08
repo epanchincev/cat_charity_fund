@@ -26,7 +26,8 @@ class FinancialBase(Base):
 
     def __repr__(self) -> str:
         return (
-            f'id: {self.id}, full_amount: {self.full_amount}, '
+            f'{self.__class__.__name__}, id: {self.id}, '
+            f'full_amount: {self.full_amount}, '
             f'invested_amount: {self.invested_amount}, '
             f'fully_invested: {self.fully_invested}, '
             f'create_date: {self.create_date}, '
