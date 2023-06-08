@@ -11,10 +11,10 @@ PASSWORD_LESS_THAN_NEED_ERROR = (
 PASSWORD_MUST_NOT_CONTAIN_EMAIL_ERROR = 'Пароль не должен содержаеть e-mail.'
 
 # validator error messages
-PROJECT_NOT_FOUND_ERROR = 'Данный проект не найден!'
+OBJECT_NOT_FOUND_ERROR = '{} не найден!'
 PROJECT_EXISTS_ERROR = 'Проект с таким именем уже существует!'
-CLOSED_PROJECT_UPDATE_ERROR = 'Закрытый проект нельзя редактировать!'
-INVESTED_RPOJECT_DELETION_ERROR = (
+CLOSED_OBJECT_UPDATE_ERROR = 'Закрытый проект нельзя редактировать!'
+OBJECT_INVESTED_DELETE_ERROR = (
     'В проект были внесены средства, не подлежит удалению!'
 )
 NEW_AMOUNT_LESS_EXISTS_ERROR = (

@@ -3,7 +3,9 @@ from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api.validators import charity_project_validators
+from app.api.validators import (check_poject_new_amount,
+                                check_project_name_duplicate, existence_check,
+                                investment_check, opennes_check)
 from app.core.db import get_async_session
 from app.core.user import current_superuser
 from app.crud import charity_project_crud, donation_crud
@@ -43,7 +45,7 @@ async def create_charity_project(
     Только для суперюзеров.\n
     Создаёт благотворительный проект.
     """
-    await charity_project_validators.check_name_duplicate(
+    await check_project_name_duplicate(
         charity_project.name, session
     )
     new_project = CharityProject(**charity_project.dict())
@@ -72,10 +74,9 @@ async def delete_charity_project(
     Удаляет проект. Нельзя удалить проект, в который уже были инвестированы средства,
     его можно только закрыть.
     """
-    project = await charity_project_validators.check_project_exists(
-        project_id, session
-    )
-    charity_project_validators.check_invested_in_project(project)
+    project = await charity_project_crud.get(project_id, session)
+    existence_check(project)
+    investment_check(project)
     project = await charity_project_crud.remove(project, session)
 
     return project
@@ -96,18 +97,18 @@ async def update_charity_project(
     Закрытый проект нельзя редактировать;
     нельзя установить требуемую сумму меньше уже вложенной.
     """
-    project = await charity_project_validators.check_project_exists(
-        project_id, session
-    )
-    charity_project_validators.check_project_is_open(project)
+    project = await charity_project_crud.get(project_id, session)
+
+    existence_check(project)
+    opennes_check(project)
 
     if project_in.name:
-        await charity_project_validators.check_name_duplicate(
+        await check_project_name_duplicate(
             project_in.name, session
         )
 
     if project_in.full_amount:
-        charity_project_validators.check_new_amount(
+        check_poject_new_amount(
             project_in.full_amount, project
         )
 
